@@ -1,7 +1,7 @@
 from datetime import datetime
 import os,sys
 import configparser
-
+import win32com.client
 def logExp(ex):
     strLogPath = getRelativePath("log")
     strTime =  datetime.now().strftime("%Y%m%d")
@@ -31,6 +31,30 @@ def countFileInFolder(folder_name):
     all_files = os.listdir(fol_path)
     print(len(all_files))
     return len(all_files)
+def chayVBA(file_path):
+    
+
+    # Đường dẫn tới file Excel của bạn
+    macro_name = 'Callback2'  # Thay đổi tên macro bạn muốn chạy
+
+    # Bước 1: Tạo đối tượng Excel
+    excel = win32com.client.Dispatch('Excel.Application')
+
+    # Bước 2: Mở workbook
+    workbook = excel.Workbooks.Open(file_path)
+
+    # Bước 3: Chạy macro
+    excel.Application.Run(macro_name)
+
+    # Bước 4: Lưu và đóng workbook
+    workbook.Save()
+    workbook.Close()
+
+    # Bước 5: Đóng Excel
+    excel.Quit()
+
+    print(f"Đã chạy macro '{macro_name}' trong file '{file_path}'")
+    
 def readIni(strSec,strKey):
     try:
         #xu li file ini de doc dc bang configParse

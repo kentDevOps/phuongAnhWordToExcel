@@ -7,3 +7,20 @@
 [20240930 15:58:11] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C�U 
 [20240930 16:00:08] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\CÂU ĐIỀU KIỆN.xlsx'
 [20240930 16:14:34] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\CÂU ĐIỀU KIỆN.xlsx'
+[20240930 18:52:02] 'Workbook' object has no attribute 'sheets'
+[20240930 18:53:20] 'Workbook' object has no attribute 'sheets'
+[20240930 18:57:19] (-2147417848, 'The object invoked has disconnected from its clients.', None, None)
+[20240930 18:58:46] (-2146827864, 'OLE error 0x800a01a8', None, None)
+[20240930 18:59:24] (-2146827864, 'OLE error 0x800a01a8', None, None)
+[20240930 19:11:34] (-2147417848, 'The object invoked has disconnected from its clients.', None, None)
+[20240930 19:21:33] CDispatch.__call__() got an unexpected keyword argument 'start'
+[20240930 19:23:26] CDispatch.__call__() got an unexpected keyword argument 'start'
+[20240930 19:26:30] CDispatch.__call__() got an unexpected keyword argument 'start'
+[20240930 19:30:37] (-2147352573, 'Member not found.', None, None)
+[20240930 19:34:11] [Errno 13] Permission denied: 'D:\\02_Code\\00_Python\\11_PhuongAnh\\report\\CÂU ĐIỀU KIỆN.xlsx'
+[20240930 19:34:49] (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2147352565), None)
+[20240930 19:36:34] (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2147352565), None)
+[20240930 19:57:06] (-2147352573, 'Member not found.', None, None)
+[20240930 20:35:09] [Errno 13] Permission denied: 'D:\\02_Code\\00_Python\\11_PhuongAnh\\report\\CÂU ĐIỀU KIỆN.xlsx'
+[20240930 20:36:35] 'bool' object is not callable
+[20240930 20:51:46] [Errno 13] Permission denied: 'D:\\02_Code\\00_Python\\11_PhuongAnh\\report\\CÂU ĐIỀU KIỆN.xlsx'

@@ -2,20 +2,21 @@ import os
 from docx import Document
 from openpyxl import Workbook
 from openpyxl import load_workbook
-from openpyxl.styles import Alignment
+from openpyxl.styles import Alignment,PatternFill
 from log import readIni
 import re
+from unidecode import unidecode
+#import xlsxwriter
+#import xlwings as xw
+#import win32com.client as win32
 
-# Đường dẫn file Word và Excel (cùng thư mục với script)
-file_word = "3.KEY- ENTERTAINMENT.docx"
-file_excel = "Ket_qua.xlsx"
 # Hàm đọc file Word và lọc các dòng chứa cụm [CÔNG CHỨC *]
 # Hàm ghi dữ liệu vào cột A của Sheet1 và nối vào dòng cuối cùng
 def contains_roman_numerals(text):
     # Regular expression to match Roman numerals
     roman_pattern = r'\b[IVXLCDM]+\b'
     return re.search(roman_pattern, text) is not None
-def append_to_excel(cauHoi,daA,daB,daC,daD,kq,giaiThich, excel_path,report_path):
+def append_to_excel(cauHoi,daA,daB,daC,daD,kq,giaiThich, excel_path,report_path,dem):
     # Mở workbook và chọn sheet 'Sheet1'
     wb = load_workbook(excel_path)
     ws = wb['s1']
@@ -52,8 +53,20 @@ def append_to_excel(cauHoi,daA,daB,daC,daD,kq,giaiThich, excel_path,report_path)
         if cell.value:
             num_lines = len(str(cell.value).split('\n'))  # Đếm số dòng trong ô
             ws.row_dimensions[row].height = 35 * num_lines  # Điều chỉnh hệ số 15 cho từng dòng  
-    wb.save(report_path)
-    print(f"Kết quả đã được thêm vào {report_path} tại Sheet1, cột A.")
+    ws.title = os.path.basename(report_path)
+    text_without_accents = unidecode( ws.title)
+    newName = os.path.join(os.path.dirname(report_path),text_without_accents) 
+    wb.save(newName)
+    print(f"Kết quả đã được thêm vào {newName} tại Folder Report...")
+'''def boido(report_path):
+# Mở ứng dụng Excel
+    # Bước 1: Mở file Excel hiện có bằng openpyxl
+    input_file = report_path  # Đường dẫn tới file Excel hiện có
+    output_file = report_path  # File Excel mới sẽ được tạo
+    workbook = xlsxwriter.Workbook(report_path)
+    ws = workbook.shee
+    # Bước 4: Đóng file mới
+    wb_new.close() '''
 def filter_congchuc_lines(word_path):
     doc = Document(word_path)
     questions = []
@@ -153,8 +166,7 @@ def find_last_row(ws, column="A"):
     while last_row > 1 and ws[f"{column}{last_row}"].value is None:
         last_row -= 1
     return last_row
-rs = filter_congchuc_lines(file_word)
-print(rs)
+
 #append_to_excel(rs,'rp.xlsx')
 def extract_correct_answers(file_word):
     doc = Document(file_word)
@@ -241,10 +253,10 @@ def find_explanation_index(file_word):
 
 
 # Lấy phần giải thích từ file
-explanations = find_explanation_index(file_word)
+'''explanations = find_explanation_index(file_word)
 #print(explanations)
 # In ra các phần giải thích đã trích xuất
 for i, explanation in enumerate(explanations, 1):
     print(f"Giải thích {i}:\n{explanation}\n")
-'''correct_answers = extract_correct_answers(file_word)
+correct_answers = extract_correct_answers(file_word)
 dA = filter_DapAnD_lines(file_word,'D.')'''

@@ -14,8 +14,9 @@ def mainPro():
         if count_doc == 0:
             print(f'File Doc Không Tồn Tại , Hãy Copy Vào Folder doc')
             return    
-        #Duyệt qua các file trong doc
+        #Duyệt qua các file trong doc 
         arrDoc = os.listdir(docPath)
+        dem = 1
         for item in arrDoc:
             sample_path = os.path.join(docPath,item)
             # Lọc dữ liệu cần fill vào excel
@@ -26,10 +27,20 @@ def mainPro():
             daD = filter_DapAnD_lines(sample_path,'D.')
             ketQua = extract_correct_answers(sample_path)
             giaiThich = find_explanation_index(sample_path)
-            append_to_excel(cauho,daA,daB,daC,daD,ketQua,giaiThich,'rp.xlsx',os.path.join(reportPath,item.split('.')[0] + '.xlsx'))
+            dem+=1
+            strAbsPath = os.path.abspath(sys.argv[0])
+            strCrrPath = os.path.dirname(strAbsPath)
+            vbaFile = os.path.join(strCrrPath,"rp.xlsx")            
+            append_to_excel(cauho,daA,daB,daC,daD,ketQua,giaiThich,vbaFile,os.path.join(reportPath,item.split('.')[0] + '.xlsx'),dem)
+            #text_without_accents = unidecode(item.split('.')[0])
+            '''strAbsPath = os.path.abspath(sys.argv[0])
+            strCrrPath = os.path.dirname(strAbsPath)
+            vbaFile = os.path.join(strCrrPath,"WordReport.xlsm")
+            chayVBA(vbaFile)'''
+            #boido(os.path.join(reportPath,item.split('.')[0] + '.xlsx'))
         end_time = time.time()
         print('------------------------------------------Kết Quả Xử Lí-----------------------------------------')
-        print(f'Thời gian thực thi: {end_time - start_time} giây')   
+        print(f'Thời gian thực thi: {end_time - start_time} giây')     
         print('------------------------------------------------End---------------------------------------------')
     except Exception as ex:
         logExp(str(ex))

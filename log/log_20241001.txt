@@ -1,0 +1,8 @@
+
+[20241001 00:40:56] (-2147352567, 'Exception occurred.', (0, 'Microsoft Excel', "Sorry, we couldn't find D:\\02_Code\\00_Python\\11_PhuongAnh\\report\\CAU DIEU KIEN.docx. Is it possible it was moved, renamed or deleted?", 'xlmain11.chm', 0, -2146827284), None)
+[20241001 00:42:26] (-2147352567, 'Exception occurred.', (0, 'Microsoft Excel', "Cannot run the macro 'Callback2'. The macro may not be available in this workbook or all macros may be disabled.", 'xlmain11.chm', 0, -2146827284), None)
+[20241001 00:44:04] [Errno 13] Permission denied: 'D:\\02_Code\\00_Python\\11_PhuongAnh\\report\\CAU DIEU KIEN.xlsx'
+[20241001 00:44:56] (-2147352567, 'Exception occurred.', (0, 'Microsoft Excel', "Sorry, we couldn't find WordReport.xlsm. Is it possible it was moved, renamed or deleted?", 'xlmain11.chm', 0, -2146827284), None)
+[20241001 00:48:40] (-2147352567, 'Exception occurred.', (0, 'Microsoft Excel', "Sorry, we couldn't find WordReport.xlsm. Is it possible it was moved, renamed or deleted?", 'xlmain11.chm', 0, -2146827284), None)
+[20241001 00:50:26] (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2147352561), None)
+[20241001 00:52:17] [Errno 2] No such file or directory: 'rp.xlsx'

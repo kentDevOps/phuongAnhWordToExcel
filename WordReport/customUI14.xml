@@ -1,0 +1,14 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+	<ribbon startFromScratch="false">
+		<tabs>
+			<tab id="customTab" label="Xu Li Data Word" insertBeforeMso="TabHome">
+				<group id="customGroup" label="Xu Li Data Group">
+					<button id="customButton" label="Trich Xuat" image="bom" size="large" onAction="Callback1" />
+				</group>
+				<group id="customGroup1" label="Bao Cao Group">
+					<button id="customButton1" label="Xuat Bao Cao" image="report" size="large" onAction="Callback2" />
+				</group>
+			</tab>
+		</tabs>
+	</ribbon>
+</customUI>
