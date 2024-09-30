@@ -26,8 +26,11 @@ def mainPro():
             daD = filter_DapAnD_lines(sample_path,'D.')
             ketQua = extract_correct_answers(sample_path)
             giaiThich = find_explanation_index(sample_path)
+            append_to_excel(cauho,daA,daB,daC,daD,ketQua,giaiThich,'rp.xlsx',os.path.join(reportPath,item.split('.')[0] + '.xlsx'))
         end_time = time.time()
+        print('------------------------------------------Kết Quả Xử Lí-----------------------------------------')
         print(f'Thời gian thực thi: {end_time - start_time} giây')   
+        print('------------------------------------------------End---------------------------------------------')
     except Exception as ex:
         logExp(str(ex))
 

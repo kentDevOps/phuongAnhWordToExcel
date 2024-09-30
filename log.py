@@ -8,11 +8,11 @@ def logExp(ex):
     strFilePath = strLogPath + r"\log_" + strTime + ".txt"
     strContents = "[{}] {}".format( datetime.now().strftime("%Y%m%d %H:%M:%S"),ex)
     if not os.path.exists(strFilePath):
-        with open(strFilePath,"x") as logFile:
+        with open(strFilePath,"x",encoding='utf-8') as logFile:
             logFile.writelines("\n")
             logFile.writelines(strContents)
     else:
-        with open(strFilePath,"a") as logFile:
+        with open(strFilePath,"a",encoding='utf-8') as logFile:
             logFile.writelines("\n")
             logFile.writelines(strContents)   
 def getRelativePath(folderPath):

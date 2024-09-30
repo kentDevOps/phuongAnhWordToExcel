@@ -1,0 +1,9 @@
+
+[20240930 13:21:26] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C¬U 
+[20240930 15:36:09] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C¬U 
+[20240930 15:39:38] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C¬U 
+[20240930 15:41:29] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C¬U 
+[20240930 15:56:31] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C¬U 
+[20240930 15:58:11] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C¬U 
+[20240930 16:00:08] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C√ÇU ƒêI·ªÄU KI·ªÜN.xlsx'
+[20240930 16:14:34] [Errno 13] Permission denied: 'D:\\02_Study\\08_Python\\17_PhuongAnh\\phuongAnhWordToExcel\\report\\C√ÇU ƒêI·ªÄU KI·ªÜN.xlsx'

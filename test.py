@@ -1,6 +1,6 @@
 from docx import Document
-
-def read_word_file(file_path):
+import re
+'''def read_word_file(file_path):
     # Mở và đọc file Word
     doc = Document(file_path)
     full_text = ""
@@ -30,4 +30,11 @@ matched_lines = find_lines_containing_keywords(text, keywords)
 
 # In các dòng tìm thấy
 for line in matched_lines:
-    print(line)
+    print(line)'''
+def contains_roman_numerals(text):
+    # Regular expression to match Roman numerals
+    roman_pattern = r'\b[IVXLCDM]+\.'
+    return re.search(roman_pattern, text) is not None
+txt = ' Mark the letter A, B, C, or D on your answer sheet to indicate the correct answer to each of the following questions.'
+a = contains_roman_numerals(txt)
+print(a)
