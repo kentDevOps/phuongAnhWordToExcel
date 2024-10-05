@@ -16,6 +16,16 @@ def contains_roman_numerals(text):
     # Regular expression to match Roman numerals
     roman_pattern = r'\b[IVXLCDM]+\b'
     return re.search(roman_pattern, text) is not None
+def count_lines_in_word(word_path):
+    doc = Document(word_path)
+    total_lines = 0
+    
+    # Đếm số dòng dựa trên dấu xuống dòng trong mỗi đoạn văn
+    for para in doc.paragraphs:
+        # Mỗi đoạn văn có thể chứa nhiều dòng nếu có ký tự '\n'
+        total_lines += para.text.count('\n') + 1 if para.text.strip() else 0
+
+    return total_lines
 def append_to_excel(cauHoi,daA,daB,daC,daD,kq,giaiThich, excel_path,report_path,dem):
     # Mở workbook và chọn sheet 'Sheet1'
     wb = load_workbook(excel_path)
@@ -69,23 +79,40 @@ def append_to_excel(cauHoi,daA,daB,daC,daD,kq,giaiThich, excel_path,report_path,
     wb_new.close() '''
 def filter_congchuc_lines(word_path):
     doc = Document(word_path)
+    total = 0
+    for para in doc.paragraphs:
+        # Mỗi đoạn văn có thể chứa nhiều dòng nếu có ký tự '\n'
+        total += para.text.count('\n') + 1 if para.text.strip() else 0    
     questions = []
     strDk = readIni("cauHoi","strListCau")
     listDk = strDk.split(',')
-    for para in doc.paragraphs:
+    gt_index = -1
+    flag = 0
+    for index,para in enumerate(doc.paragraphs):
         line = para.text
+        print(line)
+        
+        if "Giải thích" in line:
+            flag = 1
+        elif "Dịch nghĩa" in line:
+            flag = 0
         if "[CÔNG CHỨC" in line:
             #line = line.split("\n")[0]
             question = line.split("[CÔNG CHỨC")[1]  # Lấy phần sau cụm "[CÔNG CHỨC"
             question = "[CÔNG CHỨC" + question.split("\n")[0]  # Thêm lại cụm "[CÔNG CHỨC"
             questions.append(question.strip())  
         if "[CÔNG CHỨC" not in line and 'VOCABULARY' not in line and  'EXERCISES' not in line:
-            for item in listDk:
-                if item in line:   
-                    question = line.split(item)[1]  # Lấy phần sau cụm "[CÔNG CHỨC"
-                    question =item + question.split("\n")[0]  # Thêm lại cụm "[CÔNG CHỨC"  
-                    questions.append(question.strip())
-                    break;                
+            gt_index = index
+            if  gt_index < total:
+                if "Dịch nghĩa" in doc.paragraphs[gt_index +1].text :
+                    pass
+                elif "Dịch nghĩa" not in doc.paragraphs[gt_index +1].text and flag==0 and "[CÔNG CHỨC" not in doc.paragraphs[gt_index +1].text:
+                    for item in listDk:
+                        if item in line:   
+                            question = line.split(item)[1]  # Lấy phần sau cụm "[CÔNG CHỨC"
+                            question =item + question.split("\n")[0]  # Thêm lại cụm "[CÔNG CHỨC"  
+                            questions.append(question.strip())
+                            break;                
     return questions
 def filter_DapAnA_lines(word_path,dapAn):
     doc = Document(word_path)
@@ -209,7 +236,11 @@ def find_explanation_index(file_word):
         if "Giải thích" in text:
             flag = 1
             gt_index = index
-            strGt = strGt + '\n' + doc.paragraphs[gt_index].text 
+            if "Dịch nghĩa" in doc.paragraphs[gt_index +1].text:
+                t1 = 'Gt:' + doc.paragraphs[gt_index].text.split(':')[1]
+                strGt = strGt + '\n' + t1
+            else:
+                strGt = strGt + '\n' + doc.paragraphs[gt_index].text 
         elif "A."  in text and "B."  in text and "C."  in text and "D."  in text and "Dịch nghĩa" not in text:      
             flag = 0      
         elif "A."  in text and "B."  in text and "C."  in text and "D."  in text and "Dịch nghĩa"  in text: 

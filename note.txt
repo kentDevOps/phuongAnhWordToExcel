@@ -1,0 +1,1 @@
+pyinstaller --onefile  --exclude matplotlib --exclude scipy --exclude pandas --exclude numpy.py --exclude PySide6 --icon=doc.ico --name="Word Export" main.py
